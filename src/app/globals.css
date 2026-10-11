@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #16322b;
+  --color-ink-soft: #2c4a41;
+  --color-parchment: #f6f1e7;
+  --color-paper: #fbf8f2;
+  --color-sand: #e2d9c8;
+  --color-muted: #55645d;
+  --color-accent: #1f6a49;
+  --color-accent-deep: #14503a;
+  --color-gold: #fb8430;
+  --color-gold-deep: #9a4510;
+  --color-sage: #dcebe0;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+a,
+button,
+summary {
+  touch-action: manipulation;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+}
+
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  word-spacing: 0.06em;
+  line-height: 1.08;
+  font-variation-settings: "opsz" 96, "SOFT" 50;
+  text-wrap: balance;
+}
+
+.eyebrow,
+.meta-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.lede {
+  font-size: clamp(1.125rem, 1.6vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--color-muted);
+  max-width: 38rem;
+  text-wrap: pretty;
+}
+
+.prose-school p + p {
+  margin-top: 1.25rem;
+}
+
+.prose-school {
+  max-width: 40rem;
+  color: var(--color-ink-soft);
+  text-wrap: pretty;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes slide-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(var(--rise-y, 22px)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise {
+  animation: rise 0.8s var(--ease-out-soft) both;
+}
+/* Slide only, never fade: text must stay at full contrast while it moves. */
+@keyframes slide-up {
+  from { transform: translateY(var(--rise-y, 22px)); }
+  to { transform: translateY(0); }
+}
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: slide-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+@keyframes acc-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+@keyframes acc-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .rise {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Page transitions (React <ViewTransition>) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(.page-out) {
+    animation: 140ms ease-in both pt-fade reverse;
+  }
+  ::view-transition-new(.page-in) {
+    animation:
+      240ms ease-out 90ms both pt-fade,
+      460ms var(--ease-out-soft) 90ms both pt-rise;
+  }
+  ::view-transition-group(.morph) {
+    animation-duration: 480ms;
+    animation-timing-function: var(--ease-out-soft);
+  }
+  ::view-transition-image-pair(.morph) {
+    animation-name: via-blur;
+  }
+}
+@keyframes pt-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pt-rise { from { translate: 0 16px; } to { translate: 0 0; } }
+@keyframes via-blur { 35% { filter: blur(3px); } }
+
+/* ---- Hero sunburst (the lamp mark enlarged; see illustrations/Sunburst.tsx) ---- */
+.sb-thin line {
+  vector-effect: non-scaling-stroke;
+}
+.sb-ray {
+  transform-box: view-box;
+  transform-origin: 4300px 790px;
+  animation: sb-open 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i) * 32ms + 150ms);
+}
+.sb-thin {
+  animation: sb-fade 1.4s ease-out 0.3s both;
+}
+.sb-flame {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sb-flicker 2.6s ease-in-out 1.6s infinite alternate;
+}
+@keyframes sb-open { from { opacity: 0; transform: scale(0.3) rotate(-8deg); } to { opacity: 1; transform: none; } }
+@keyframes sb-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sb-flicker { from { transform: scale(1, 1); } to { transform: scale(0.96, 1.05) rotate(0.8deg); } }
+@keyframes sb-drift { to { transform: translateY(48px); } }
+@media (min-width: 768px) {
+  @supports (animation-timeline: scroll()) {
+    .sb-svg {
+      animation: sb-drift linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 70vh;
+    }
+  }
+}
+
+/* ---- Soft drifting glow behind the hero ---- */
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: glow-drift 22s ease-in-out infinite alternate;
+}
+@keyframes glow-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(40px, 30px) scale(1.12); }
+}
+
+/* ---- Arch mask: the logo's shape, used for artwork and photos ---- */
+.arch {
+  border-radius: 9999px 9999px 1.75rem 1.75rem;
+  overflow: hidden;
+}
+
+/* ---- Bento dots: each dot pops in as the tile scrolls into view ---- */
+@supports (animation-timeline: view()) {
+  .dot-pop {
+    animation: dot-pop linear both;
+    animation-timeline: view();
+    animation-range: entry 10% entry calc(50% + var(--i, 0) * 2%);
+  }
+}
+@keyframes dot-pop {
+  from { transform: scale(0); background-color: var(--color-gold); }
+  to { transform: scale(1); }
+}
+
+/* ---- Day timeline: a line draws down the page and a sun travels along it ---- */
+.day-line {
+  position: absolute;
+  inset-block: 0.5rem;
+  inset-inline-start: 0.5rem;
+  width: 2px;
+  container-type: size;
+  background: color-mix(in oklab, var(--color-parchment) 18%, transparent);
+}
+.day-line > i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(var(--color-gold), var(--color-accent));
+  transform-origin: top;
+}
+.day-sun {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 9999px;
+  background: var(--color-gold);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--color-gold) 30%, transparent), 0 0 24px 6px color-mix(in oklab, var(--color-gold) 55%, transparent);
+  opacity: 0;
+}
+.day-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-2.5rem + 0.5rem + 1px - 6px);
+  top: 2.15rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: var(--color-gold);
+}
+@supports (animation-timeline: view()) {
+  .day {
+    view-timeline-name: --day;
+    view-timeline-axis: block;
+  }
+  .day-line > i {
+    animation: day-grow linear both;
+    animation-timeline: --day;
+    animation-range: cover 18% cover 62%;
+  }
+  .day-sun {
+    animation: sun-travel linear both;
+    animation-timeline: --day;
+    animation-range: cover 18% cover 62%;
+  }
+  .day-item::before {
+    background: color-mix(in oklab, var(--color-parchment) 25%, transparent);
+    animation: dot-on linear both;
+    animation-timeline: --day;
+    animation-range: cover calc(20% + var(--i, 0) * 8.8%) cover calc(24% + var(--i, 0) * 8.8%);
+  }
+}
+@keyframes day-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes sun-travel {
+  from { translate: 0 0; opacity: 1; }
+  to { translate: 0 100cqh; opacity: 1; }
+}
+@keyframes dot-on {
+  from { background-color: color-mix(in oklab, var(--color-parchment) 25%, transparent); transform: scale(0.7); }
+  to { background-color: var(--color-gold); transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-svg, .sb-ray, .sb-thin, .sb-flame, .glow, .dot-pop,
+  .day-line > i, .day-sun, .day-item::before {
+    animation: none !important;
+  }
+  .day-item::before { background: var(--color-gold); }
+  .day-sun { display: none; }
+}
