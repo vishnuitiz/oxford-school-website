@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Oxford International School: website admin guide</title>
+<style>
+  @page { size: A4; margin: 18mm 18mm 20mm; }
+  :root { --ink:#16322b; --soft:#2c4a41; --muted:#55645d; --accent:#a8431f; --sand:#e2d9c8; --paper:#fbf8f2; --sage:#dfe6dc; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin:0; color:var(--ink); font: 10.5pt/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  h1,h2,h3 { font-family: "Iowan Old Style", Georgia, "Times New Roman", serif; font-weight: 400; margin: 0; }
+  .cover { padding: 6mm 0 8mm; border-bottom: 2px solid var(--ink); margin-bottom: 8mm; }
+  .eyebrow { font-size: 8.5pt; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 3mm; }
+  h1 { font-size: 30pt; line-height: 1.08; }
+  .sub { color: var(--muted); font-size: 11.5pt; margin-top: 3mm; max-width: 130mm; }
+  h2 { font-size: 17pt; margin: 9mm 0 3mm; padding-bottom: 2mm; border-bottom: 1px solid var(--sand); break-after: avoid; }
+  h3 { font-size: 12.5pt; margin: 5mm 0 1.5mm; break-after: avoid; }
+  p { margin: 0 0 2.5mm; }
+  .muted { color: var(--muted); }
+  .note { background: var(--sage); border-left: 3px solid var(--ink); padding: 3mm 4mm; margin: 4mm 0; break-inside: avoid; }
+  .warn { background: #f6e6df; border-left: 3px solid var(--accent); padding: 3mm 4mm; margin: 4mm 0; break-inside: avoid; }
+  table { width:100%; border-collapse: collapse; margin: 2mm 0 4mm; break-inside: avoid; }
+  th { text-align:left; font-size: 8.5pt; letter-spacing:.08em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink); padding: 2mm 2.5mm; }
+  td { vertical-align: top; padding: 2.5mm; border-bottom: 1px solid var(--sand); }
+  td.name { font-weight: 700; width: 30%; }
+  .url { font-size: 7.6pt; word-break: break-all; color: var(--soft); }
+  a { color: var(--accent); text-decoration: underline; }
+  .tag { display:inline-block; font-size: 7.5pt; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding: .5mm 2mm; border-radius: 2mm; margin-bottom: 1mm; }
+  .public { background: var(--sage); color: var(--ink); }
+  .private { background: #f6e6df; color: #7a2d12; }
+  ol.steps { list-style:none; counter-reset: s; padding:0; margin: 2mm 0 4mm; }
+  ol.steps li { counter-increment: s; position: relative; padding: 0 0 3mm 11mm; break-inside: avoid; }
+  ol.steps li::before { content: counter(s); position:absolute; left:0; top:0; width:7mm; height:7mm; border-radius:50%; background: var(--ink); color:#fff; font-weight:700; font-size:9pt; text-align:center; line-height:7mm; }
+  ul { margin: 1mm 0 3mm; padding-left: 5mm; }
+  li { margin-bottom: 1mm; }
+  .two { display:grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .box { border:1px solid var(--sand); background: var(--paper); padding: 3.5mm 4mm; border-radius: 2mm; break-inside: avoid; }
+  .box h3 { margin-top: 0; font-size: 11.5pt; }
+  code, .k { font-family: Menlo, Consolas, monospace; font-size: 9pt; background: var(--paper); border:1px solid var(--sand); padding: 0 1.2mm; border-radius: 1mm; }
+  .pb { break-before: page; }
+  .foot { margin-top: 8mm; font-size: 8.5pt; color: var(--muted); border-top: 1px solid var(--sand); padding-top: 3mm; }
+ol.steps{break-inside:avoid}h3{break-after:avoid}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="eyebrow">Oxford International School</p>
+  <h1>Website admin guide</h1>
+  <p class="sub">Everything you need to run the news pages and read admissions enquiries: your links, the daily steps, and what to do if something looks wrong.</p>
+</div>
+
+<h2 style="margin-top:0">1. Your links</h2>
+
+<h3>Forms <span class="muted" style="font-size:9.5pt">&mdash; anyone with the link can use them</span></h3>
+<table>
+  <tr><th style="width:30%">What it is</th><th style="width:27%">Who uses it</th><th>Link</th></tr>
+  <tr>
+    <td class="name"><span class="tag public">Public</span><br>Admission enquiry</td>
+    <td>Parents. Every &ldquo;Admission enquiry&rdquo; button on the website opens it. It also lets them ask for a visit day.</td>
+    <td class="url"><a href="https://forms.gle/N8BqpRt8tSGS98Kc7">https://forms.gle/N8BqpRt8tSGS98Kc7</a></td>
+  </tr>
+  <tr>
+    <td class="name"><span class="tag public">Public</span><br>Share a news article</td>
+    <td>Staff, students and parents who want to send in an article.</td>
+    <td class="url"><a href="https://forms.gle/gyCmri5WDjEjEL1T6">https://forms.gle/gyCmri5WDjEjEL1T6</a></td>
+  </tr>
+</table>
+
+<h3>Sheets <span class="muted" style="font-size:9.5pt">&mdash; private; you must be added as an editor</span></h3>
+<table>
+  <tr><th style="width:30%">What it is</th><th style="width:27%">Who uses it</th><th>Link</th></tr>
+  <tr>
+    <td class="name"><span class="tag private">Private</span><br>News sheet</td>
+    <td>You. Read new articles here and approve them.</td>
+    <td class="url"><a href="https://docs.google.com/spreadsheets/d/15Be6TT03EPlyDUVifhJRmd0cW98Od8CCVduJmOlLMIU">https://docs.google.com/spreadsheets/d/15Be6TT03EPlyDUVifhJRmd0cW98Od8CCVduJmOlLMIU</a></td>
+  </tr>
+  <tr>
+    <td class="name"><span class="tag private">Private</span><br>Enquiries sheet</td>
+    <td>You and admissions staff only. It holds parents&rsquo; names, emails and phone numbers.</td>
+    <td class="url"><a href="https://docs.google.com/spreadsheets/d/1HYi_jLG5coKX9iHNlUsav1gqH40_2BxH-z4y5laMq04">https://docs.google.com/spreadsheets/d/1HYi_jLG5coKX9iHNlUsav1gqH40_2BxH-z4y5laMq04</a></td>
+  </tr>
+</table>
+
+<h3>Photo folder <span class="muted" style="font-size:9.5pt">&mdash; for article photos</span></h3>
+<table>
+  <tr><th style="width:30%">What it is</th><th style="width:27%">Who uses it</th><th>Link</th></tr>
+  <tr>
+    <td class="name"><span class="tag public">Public by link</span><br>Website photos folder</td>
+    <td>You. Upload photos here, copy each photo&rsquo;s link into the News sheet. Anything in it can be viewed by anyone with the link.</td>
+    <td class="url"><a href="https://drive.google.com/drive/folders/1ZpHrY_aog8LuXAFEw3SywQnl8C2VNdzX">https://drive.google.com/drive/folders/1ZpHrY_aog8LuXAFEw3SywQnl8C2VNdzX</a></td>
+  </tr>
+</table>
+
+<div class="warn"><strong>Never share or publish the Enquiries sheet.</strong> If a link opens with &ldquo;You need access&rdquo;, ask the person who set this up to add your Google account as an editor.</div>
+
+<h2>2. How an article reaches the website</h2>
+<ol class="steps">
+  <li><strong>Someone submits the news form.</strong> The form asks for a title, category (News or Event), date, their name and role, and the article. You can use the same form for your own articles.</li>
+  <li><strong>It appears in the News sheet.</strong> Open the tab called <em>Form Responses 1</em>. Each submission is one row, and <strong>new rows are highlighted yellow</strong> until you approve them.</li>
+  <li><strong>Read it.</strong> If it needs a fix, edit the words directly in the cell. Check there are no children&rsquo;s full names or photos without a parent&rsquo;s agreement.</li>
+  <li><strong>Choose a Topic.</strong> In the <span class="k">Topic</span> column pick from the dropdown (Sports, Clubs, Celebrations&hellip;). The article then also appears on that Activities page and in the Gallery. Leave it empty if none fits.</li>
+  <li><strong>Add photos (optional).</strong> See &ldquo;Adding photos&rdquo; below.</li>
+  <li><strong>Approve it.</strong> In the <span class="k">Approved</span> column choose <span class="k">Yes</span>. Nothing goes on the website until it says Yes. The yellow highlight disappears.</li>
+  <li><strong>The site updates at the next rebuild.</strong> The website rebuilds itself every morning. See &ldquo;Publish now&rdquo; below for doing it sooner.</li>
+</ol>
+
+<div class="note"><strong>Allow a few minutes.</strong> After you set Approved to Yes, Google takes a few minutes to update the public copy of the sheet. A rebuild started in that window can miss your article. Wait, then rebuild.</div>
+
+<h3>Adding photos</h3>
+<ol class="steps">
+  <li>Open the <strong>photo folder</strong> (link in section 1) and drag your photos in. Use only photos you are allowed to publish.</li>
+  <li>Right-click a photo, choose <em>Share</em> &rarr; <em>Copy link</em>.</li>
+  <li>In the News sheet, click the article&rsquo;s <span class="k">Photos</span> cell and paste the link. For more than one photo, press <span class="k">Alt+Enter</span> (Windows) or <span class="k">Option+Enter</span> (Mac) inside the cell for a new line and paste the next link. Links can also be separated by a space or a comma.</li>
+  <li>Optional caption: type <span class="k">|</span> after the link, then the words, for example <em>&hellip;/view | The relay team at the finish</em>.</li>
+</ol>
+<p><strong>Photos sent through the form (if enabled).</strong> If the news form has a <em>Photo upload</em> question, contributors attach photos there and they appear in a <span class="k">Photo upload</span> column. You do nothing extra: approving the row (<span class="k">Yes</span>) makes those photos usable. They stay private until you approve. Contributors must sign in with a Google account to use that form. Only photos are published; other file types are skipped.</p>
+<p class="muted">iPhone photos (HEIC) work as they are; no need to convert them. Up to 12 photos per article. The first photo becomes the cover image. Photos are resized and location data is removed automatically when the site rebuilds.</p>
+
+<h3>Publish now</h3>
+<p>In the News sheet menu bar there is a menu called <strong>Oxford site</strong>. Choose <strong>Publish approved articles now</strong> to update the website within about two minutes instead of waiting for the morning.</p>
+<div class="note"><strong>Current status:</strong> this button works only once the website is hosted and its rebuild link has been saved (<em>Oxford site &rarr; Set rebuild link&hellip;</em>). Until then, ask the person who built the site to rebuild it.</div>
+
+<h2>3. Writing and approving well</h2>
+<div class="two">
+  <div class="box">
+    <h3>Category and date</h3>
+    <ul>
+      <li><strong>News</strong>: something that has happened. Use the day it happened.</li>
+      <li><strong>Event</strong>: something coming up. Use the day of the event. It shows under &ldquo;Upcoming events&rdquo; until that day has passed, then under &ldquo;Past events&rdquo;.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h3>Article text</h3>
+    <ul>
+      <li>Plain text only. Bold, colours and links from other programs do not carry over; a web address shows as ordinary text.</li>
+      <li>Press Enter to start a new paragraph.</li>
+      <li>Keep titles short. Very long titles still display, but read better when brief.</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Where articles appear</h3>
+<table>
+  <tr><th>Place</th><th>What it shows</th></tr>
+  <tr><td class="name">Home page</td><td>The latest 3 items. Upcoming events come first, then the newest news.</td></tr>
+  <tr><td class="name">News page</td><td>The latest 20 news items.</td></tr>
+  <tr><td class="name">Events page</td><td>All upcoming events and the 12 most recent past events.</td></tr>
+  <tr><td class="name">Activities pages</td><td>The latest articles with the matching Topic (for example Sports).</td></tr>
+  <tr><td class="name">Gallery</td><td>Every article that has photos, grouped by Topic.</td></tr>
+  <tr><td class="name">Archives</td><td>Everything older. Nothing is ever deleted automatically.</td></tr>
+  <tr><td class="name">Its own page</td><td>Every approved article has a page that can be shared by link. Its web address is created automatically (<em>Slug</em> column) and stays the same even if you change the title.</td></tr>
+</table>
+
+<h3>Taking an article down</h3>
+<ol class="steps">
+  <li>In the News sheet, change <span class="k">Approved</span> to <span class="k">No</span>, or delete the row.</li>
+  <li>Rebuild the website (use <em>Oxford site &rarr; Publish approved articles now</em> once it is connected). Do this straight away if a parent has withdrawn consent.</li>
+</ol>
+<p class="muted">Copies already saved by search engines or other websites cannot be recalled by the site.</p>
+
+<h2>4. Admissions enquiries</h2>
+<ul>
+  <li>Every enquiry and visit booking lands as a new row in the <strong>Enquiries sheet</strong>.</li>
+  <li>The website promises families a reply <strong>within two working days</strong>. Visit times are confirmed by phone or email.</li>
+  <li>The privacy page says enquiries are kept while a conversation continues and for up to twelve months afterwards, then deleted. Delete old rows accordingly.</li>
+  <li>Keep this sheet private: share it only with people who handle admissions.</li>
+</ul>
+
+<h2 class="pb" style="margin-top:0">5. Please don&rsquo;t change these</h2>
+<p>The website finds each column by its heading, so a few changes will stop articles appearing.</p>
+<table>
+  <tr><th>Do not</th><th>Why</th></tr>
+  <tr><td class="name">Rename a column heading in the News sheet (Title, Category, Date, Approved, Topic, Photos, Slug&hellip;) or the wording that starts a form question</td><td>The website can no longer find the column. Fixing a typo later in a question&rsquo;s wording is fine.</td></tr>
+  <tr><td class="name">Delete the <em>Approved</em>, <em>Topic</em>, <em>Photos</em> or <em>Slug</em> columns</td><td>Articles stop appearing, or lose their topic, photos or permanent address.</td></tr>
+  <tr><td class="name">Change the <em>Slug</em> of an article that is already live</td><td>Its old web address stops working.</td></tr>
+  <tr><td class="name">Edit, rename or delete the <em>Published</em> tab</td><td>It is filled in automatically and is what the website reads.</td></tr>
+  <tr><td class="name">Share the Enquiries sheet or the website&rsquo;s public data link</td><td>Enquiries hold personal details of families and children.</td></tr>
+</table>
+
+<h2>6. If something looks wrong</h2>
+<table>
+  <tr><th>What you see</th><th>What to check</th></tr>
+  <tr><td class="name">An approved article is not on the website</td><td>1. Is <span class="k">Approved</span> exactly <span class="k">Yes</span>? 2. Does it show in the <em>Published</em> tab? 3. Have you waited for a rebuild (morning, or Publish now) plus a few minutes? 4. Does the row have a date, a title and article text? A row missing any of these is skipped.</td></tr>
+  <tr><td class="name">An article is live but its photo is missing</td><td>Check the photo link was pasted in the <em>Photos</em> cell of that row, the photo is inside the school photo folder, and the link opens when you are signed out. Then rebuild. A bad photo link never blocks the article; it is just skipped.</td></tr>
+  <tr><td class="name">The Published tab shows an error or looks empty when it shouldn&rsquo;t</td><td>Do not edit it. Tell the person who built the site.</td></tr>
+  <tr><td class="name">A date looks strange (a five-digit number)</td><td>The website understands it, but tell the person who built the site so the formula can be checked.</td></tr>
+  <tr><td class="name">No email alert for a new submission</td><td>Check spam. Alerts go to the Google account that ran the setup. Another person can turn on Google&rsquo;s own alert: open the form, Responses tab, three dots, &ldquo;Get email notifications for new responses&rdquo;.</td></tr>
+  <tr><td class="name">The website did not rebuild in the morning</td><td>Use <em>Oxford site &rarr; Publish approved articles now</em>. If it says no working link, the rebuild link needs saving again.</td></tr>
+</table>
+
+
+
+</body>
+</html>
